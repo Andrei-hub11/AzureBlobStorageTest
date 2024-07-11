@@ -3,7 +3,7 @@ namespace AzureBlobStorageTest.Services;
 
 public interface IAzureService
 {
-    IAsyncEnumerable<BlobURLResponseDTO> GetFilesAsync(CancellationToken cancellationToken);
-    Task<bool> UploadFileAsync(IFormFile file, CancellationToken cancellationToken);
-    Task<bool> DeleteFileAsync(string blobName, CancellationToken cancellationToken);
+    IAsyncEnumerable<BlobURLResponseDTO> GetImagesAsync(CancellationToken cancellationToken);
+    Task<bool> UploadImageAsync(IFormFile file, CancellationToken cancellationToken);
+    Task<bool> DeleteImageAsync(string blobName, CancellationToken cancellationToken);
 }

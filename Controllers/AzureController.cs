@@ -16,11 +16,11 @@ public class AzureController : ControllerBase
     }
 
     [HttpGet]
-    public IAsyncEnumerable<BlobURLResponseDTO> GetAllFile(CancellationToken cancellationToken)
+    public IAsyncEnumerable<BlobURLResponseDTO> GetImages(CancellationToken cancellationToken)
     {
         try
         {
-            return _azureService.GetFilesAsync(cancellationToken);
+            return _azureService.GetImagesAsync(cancellationToken);
         }
         catch (Exception)
         {
@@ -29,11 +29,11 @@ public class AzureController : ControllerBase
     }
 
     [HttpPost("upload")]
-    public async Task<IActionResult> UploadFile(IFormFile file, CancellationToken cancellationToken)
+    public async Task<IActionResult> UploadImage(IFormFile file, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await _azureService.UploadFileAsync(file, cancellationToken);
+            var result = await _azureService.UploadImageAsync(file, cancellationToken);
 
             return Ok(result);
         }
@@ -44,11 +44,11 @@ public class AzureController : ControllerBase
     }
 
     [HttpDelete("delete/{fileName}")]
-    public async Task<IActionResult> DeleteFile(string fileName, CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteImage(string fileName, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await _azureService.DeleteFileAsync(fileName, cancellationToken);
+            var result = await _azureService.DeleteImageAsync(fileName, cancellationToken);
 
             return Ok(result);
         }
